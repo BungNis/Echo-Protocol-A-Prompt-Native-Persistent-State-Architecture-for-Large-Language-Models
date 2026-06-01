@@ -1,0 +1,63 @@
+# Archive — Development History
+
+This folder contains the full development history of Echo Protocol, from its earliest prototype to the version preceding the current release.
+
+Echo Protocol was not designed from a theoretical framework. It was built iteratively — each version responding to specific failures observed during actual use. Reading through the archive shows exactly how the system evolved: what broke, what was added to fix it, and what that fix revealed about the next problem.
+
+The progression from V0 to V6 spans approximately eight days of active development.
+
+---
+
+## V0 — Roleplay_System_Protocol_MasterV0.md
+
+The original prototype. Established the 14-rule structure that persists through all subsequent versions: player autonomy, NPC behavior, formatting rules, and a basic Tracker. At this stage the Tracker was a single compressed line with no date tracking, no error recovery, and no session continuity. The system worked within a session but had no mechanism for resuming state across sessions.
+
+---
+
+## V1 — Roleplay_System_Protocol_MasterV1.md
+
+First refinement pass. Identified and fixed a recurring failure: AI was breaking internal monologue and NPC dialogue across multiple quote blocks when they belonged in one. Added explicit WRONG/CORRECT examples directly into the rules. This was the beginning of using examples as enforcement — telling the model not just what to do, but showing it exactly what not to do.
+
+---
+
+## V2 — Roleplay_System_Protocol_MasterV2.md
+
+Introduced the Error Recovery loop. When the model violated a rule, the error was logged in the Tracker as `[ERR]`, the model entered cautious mode, and normal behavior resumed only after a clean response. This made error correction self-sustaining without human intervention. Also added the Language Response Rule (respond in player's language, Tracker always English) and tightened the Action Rule to clarify the boundary between routine and consequential actions.
+
+---
+
+## V3 — Roleplay_System_Protocol_MasterV3.md
+
+Two major additions. First: Auto-Naming Rule and First Encounter Naming Rule — the model now generates names automatically and withholds NPC names until narratively appropriate. Second: PC Behavior Logging, tracking how a character's speech patterns shift over in-world time using Long-Term and Short-Term fields. The Tracker format became significantly more compressed in this version.
+
+---
+
+## V4 — Echo_Protocol_ProjectV4.md
+
+The system acquired its cross-session capability. Tracker now permanently stores world, character, and starting point fields. Pasting the last Tracker into a new session and typing "Start" resumes full state. The name changed from Roleplay System Protocol to Echo Protocol at this stage. Tracker became mandatory rather than optional, and the error code system expanded to cover tracker format violations, missing code blocks, naming violations, and line-breaking violations.
+
+---
+
+## V4.5 — Echo_Protocol_ProjectV4_5.md
+
+A focused hardening pass between V4 and V5. Added a Tracker Validation checklist requiring the model to verify its own output before sending: tracker exists, inside code block, all English, physical status only, checksum present, no line breaks. This was the first explicit self-verification step built into the protocol.
+
+---
+
+## V5 — Echo_Protocol_ProjectV5.md
+
+Major compression pass. All rules rewritten into dense continuous prose — optimized for token efficiency rather than human readability. This was the point where the prompt became explicitly written for the model to execute, not for humans to read. Introduced the Event field `[X]` with Rumor, Timer, Flag, and Countdown subsystems, each with its own expiration logic. NPC relation tracking expanded significantly.
+
+---
+
+## V6 — Echo_Protocol_ProjectV6.md
+
+Introduced RULE ZERO — the highest-priority instruction requiring a Tracker output on the very first message of any session, before any other response. This solved a class of failures where the model would respond naturally to an opening message and skip state initialization entirely. Also introduced the full NPC encoding system: mood codes, relation codes, secret relations, goals with decay flags, and knowledge attributes across six domains. Dynamic Decay (`*` for slow, `!` for permanent) was added in this version.
+
+---
+
+*V7 (current) is in the `/current` folder.*
+
+---
+
+เอาไปวางใน `archive/README.md` ได้เลยครับ
