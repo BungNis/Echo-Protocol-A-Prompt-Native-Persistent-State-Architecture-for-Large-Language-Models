@@ -20,3 +20,6 @@ Implement the Dual-Agent External Memory extension proposed in the paper
 License
 Open documentation. Free to use, replicate, fork, and critique.
 Echo Protocol © 2025 Arnis Saisalam · Thailand · Development began May 23, 2025
+
+Demo session (Thai): https://chat.deepseek.com/share/riche58of0kmj3phqo
+Language: Thai — the Tracker remains in English regardless of session language.
